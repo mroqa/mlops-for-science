@@ -242,7 +242,7 @@ def generate_patient_volume_heatmap(start, end, clinic, hm_click, admit_type, re
     return {"data": data, "layout": layout}
 
 
-def generate_table_row(id, style, col1, col2, col3):
+def generate_table_row(id1, style, col1, col2, col3):
     """ Generate table rows.
 
     :param id: The ID of table row.
@@ -253,7 +253,7 @@ def generate_table_row(id, style, col1, col2, col3):
     """
 
     return html.Div(
-        id=id,
+        id=id1,
         className="row table-row",
         style=style,
         children=[
@@ -595,7 +595,7 @@ app.layout = html.Div(
         Input("reset-btn", "n_clicks"),
     ],
 )
-def update_heatmap(start, end, clinic, hm_click, admit_type, reset_click):
+def update_heatmap(start, end, clinic, hm_click, admit_type):
     start = start + " 00:00:00"
     end = end + " 00:00:00"
 
