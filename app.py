@@ -8,7 +8,10 @@ import datetime
 from datetime import datetime as dt
 import pathlib
 
-app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],)
+app = dash.Dash(
+    __name__,
+    meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
+)
 
 app.title = "Clinical Analytics Dashboard"
 
@@ -236,7 +239,7 @@ def generate_patient_volume_heatmap(start, end, clinic, hm_click, admit_type, re
 
 
 def generate_table_row(id_row, style, col1, col2, col3):
-    """ Generate table rows.
+    """Generate table rows.
 
     :param id: The ID of table row.
     :param style: Css style of this row.
@@ -623,7 +626,7 @@ app.clientside_callback(
         Input("admit-select", "value"),
         Input("patient_volume_hm", "clickData"),
         # Input("reset-btn", "n_clicks"),
-    ]
+    ],
 )
 def update_table(start, end, clinic, admit_type, heatmap_click):
     start = start + " 00:00:00"
