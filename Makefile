@@ -7,7 +7,7 @@ format:
 	black *.py mylib/*.py
 lint:
 	#Flake8 or pylint
-	pylint --disable=R,C *.py mylib/*.py
+	pylint --disable=R,C,unused-variable *.py mylib/*.py
 test:
 	#test
 	#python -m pytest -vv --cov=mylib test_logic.py

@@ -9,14 +9,9 @@ import datetime
 from datetime import datetime as dt
 import pathlib
 
-app = dash.Dash(
-    __name__,
-    meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
-)
-app.title = "Clinical Analytics Dashboard"
+app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],)
 
-server = app.server
-app.config.suppress_callback_exceptions = True
+app.title = "Clinical Analytics Dashboard"
 
 # Path
 BASE_PATH = pathlib.Path(__file__).parent.resolve()
@@ -241,7 +236,7 @@ def generate_patient_volume_heatmap(start, end, clinic, hm_click, admit_type, re
     return {"data": data, "layout": layout}
 
 
-def generate_table_row(id, style, col1, col2, col3):
+def generate_table_row(id_row, style, col1, col2, col3):
     """ Generate table rows.
 
     :param id: The ID of table row.
@@ -252,7 +247,7 @@ def generate_table_row(id, style, col1, col2, col3):
     """
 
     return html.Div(
-        id=id,
+        id=id_row,
         className="row table-row",
         style=style,
         children=[
