@@ -689,7 +689,7 @@ def update_table(start, end, clinic, admit_type, heatmap_click):
             figure_list.append(department_score_figure)
 
     elif prop_type == "selectedData":
-        selected_patient = ctx.triggered[0]["value"]["points"][0]["customdata"]
+        # selected_patient = ctx.triggered[0]["value"]["points"][0]["customdata"]
         selected_index = [ctx.triggered[0]["value"]["points"][0]["pointIndex"]]
 
         # [] turn on un-selection for all other plots, [index] for this department
