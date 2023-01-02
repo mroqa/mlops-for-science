@@ -1,5 +1,4 @@
 import dash
-# from dash import dcc, html
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, ClientsideFunction
@@ -242,7 +241,7 @@ def generate_patient_volume_heatmap(start, end, clinic, hm_click, admit_type, re
     return {"data": data, "layout": layout}
 
 
-def generate_table_row(id1, style, col1, col2, col3):
+def generate_table_row(id, style, col1, col2, col3):
     """ Generate table rows.
 
     :param id: The ID of table row.
@@ -253,7 +252,7 @@ def generate_table_row(id1, style, col1, col2, col3):
     """
 
     return html.Div(
-        id=id1,
+        id=id,
         className="row table-row",
         style=style,
         children=[
@@ -595,7 +594,7 @@ app.layout = html.Div(
         Input("reset-btn", "n_clicks"),
     ],
 )
-def update_heatmap(start, end, clinic, hm_click, admit_type):
+def update_heatmap(start, end, clinic, hm_click, admit_type, reset_click):
     start = start + " 00:00:00"
     end = end + " 00:00:00"
 
@@ -634,7 +633,7 @@ app.clientside_callback(
     + wait_time_inputs
     + score_inputs,
 )
-def update_table(start, end, clinic, admit_type, heatmap_click):
+def update_table(start, end, clinic, admit_type, heatmap_click, reset_click, *args):
     start = start + " 00:00:00"
     end = end + " 00:00:00"
 
@@ -698,7 +697,7 @@ def update_table(start, end, clinic, admit_type, heatmap_click):
             figure_list.append(department_score_figure)
 
     elif prop_type == "selectedData":
-        # selected_patient = ctx.triggered[0]["value"]["points"][0]["customdata"]
+        selected_patient = ctx.triggered[0]["value"]["points"][0]["customdata"]
         selected_index = [ctx.triggered[0]["value"]["points"][0]["pointIndex"]]
 
         # [] turn on un-selection for all other plots, [index] for this department
