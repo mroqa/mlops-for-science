@@ -1,6 +1,5 @@
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc, html
 from dash.dependencies import Input, Output, ClientsideFunction
 
 import numpy as np
@@ -586,10 +585,10 @@ app.layout = html.Div(
         Input("clinic-select", "value"),
         Input("patient_volume_hm", "clickData"),
         Input("admit-select", "value"),
-        Input("reset-btn", "n_clicks"),
+        # Input("reset-btn", "n_clicks"),
     ],
 )
-def update_heatmap(start, end, clinic, hm_click, admit_type, reset_click):
+def update_heatmap(start, end, clinic, hm_click, admit_type):
     start = start + " 00:00:00"
     end = end + " 00:00:00"
 
@@ -623,12 +622,10 @@ app.clientside_callback(
         Input("clinic-select", "value"),
         Input("admit-select", "value"),
         Input("patient_volume_hm", "clickData"),
-        Input("reset-btn", "n_clicks"),
+        # Input("reset-btn", "n_clicks"),
     ]
-    + wait_time_inputs
-    + score_inputs,
 )
-def update_table(start, end, clinic, admit_type, heatmap_click, reset_click, *args):
+def update_table(start, end, clinic, admit_type, heatmap_click):
     start = start + " 00:00:00"
     end = end + " 00:00:00"
 
