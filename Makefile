@@ -4,13 +4,13 @@ install:
 		pip install -r requirements.txt
 format:
 	#Format here
-	black *.py mylib/*.py
+	black *.py dash_test/*.py
 lint:
 	#Flake8 or pylint
-	pylint --disable=R,C *.py mylib/*.py
+	pylint --disable=R,C *.py dash_test/*.py
 test:
 	#test
-	#python -m pytest -vv --cov=./ test_logic.py
+	# python -m pytest -vv --cov=app.py dash_test/test_one.py
 build:
 	#Build container
 deploy:
